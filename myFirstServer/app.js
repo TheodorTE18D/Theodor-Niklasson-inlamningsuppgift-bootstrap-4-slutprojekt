@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5500
 
 const clientDir = __dirname + "\\client\\"
 
@@ -16,8 +16,9 @@ app.get('/zombies', (req, res) => {
   })
 
 app.post('/', (req, res)  =>  {
-    console.log(req.body.name)
     console.log(req.body.email)
+    console.log(req.body.name)
+    res.redirect('/')
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
