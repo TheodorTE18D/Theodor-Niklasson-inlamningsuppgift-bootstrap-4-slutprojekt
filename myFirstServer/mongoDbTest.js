@@ -7,8 +7,9 @@ db.once('open', function() {
 
 });
 
-const kittySchema = new mongoose.Schema({
-    name: String
+const personSchema = new mongoose.Schema({
+    name: String,
+    email: String
   });
 const silence = new Kitten({ name: 'Silence' });
 console.log(silence.name);
