@@ -10,11 +10,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 
 });
-const personSchema = new mongoose.Schema({
-    name: String,
-    email: String
-  });
 
+
+const personModel = require('./PersonModule')
+const store = require('./mongoDbTest')
 const clientDir = __dirname + "\\client\\"
 
 app.use(express.json())
@@ -28,17 +27,13 @@ app.get('/zombies', (req, res) => {
     res.sendFile(clientDir + "zombie.png")
   })
 
-  const people = mongoose.model('People', personSchema);
-  const person = new people({ name: 'fluffy' });
-
-    app.post('/', (req, res)  =>  {
-    console.log(req.body.email)
-    console.log(req.body.name)
-      
-    person.save();
+app.post('/', (req, res)  =>  {
+    let person = personModel.createPerson(req.body.name, req.body.email, req.body.age)
+    person.store();
     res.redirect('/')
     
 })
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
