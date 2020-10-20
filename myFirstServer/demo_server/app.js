@@ -11,7 +11,7 @@ db.once('open', function() {
 
 });
 
-
+const message = require('./MsgModule')
 const personModel = require('./PersonModule')
 const store = require('./mongoDbTest')
 const clientDir = __dirname + "\\client\\"
@@ -29,7 +29,9 @@ app.get('/zombies', (req, res) => {
 
 app.post('/', (req, res)  =>  {
     let person = personModel.createPerson(req.body.name, req.body.email, req.body.age)
-    person.store();
+    let msg = message.createMessage(req.body.name, req.body.msg)
+    person.store()
+    msg.store()
     res.redirect('/')
     
 })
