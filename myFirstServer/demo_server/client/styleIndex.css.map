@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAA;EACA,gBAAgB,EAAE,IAAI;CACzB;;AAED,AAAA,EAAE,CAAA;EACE,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "styleIndex.scss"
+    ],
+    "names": [],
+    "file": "styleIndex.css"
+}
