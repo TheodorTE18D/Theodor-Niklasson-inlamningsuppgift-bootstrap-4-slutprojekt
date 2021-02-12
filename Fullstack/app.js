@@ -18,7 +18,18 @@ app.set('view engine', 'ejs');
 app.get('/',  async (req, res) => {
   
   res.render('index.ejs');
+  
 });
+
+
+app.get('/Message', (req, res) => {
+  res.render('message.ejs');
+});
+
+app.get('/Info', (req, res) => {
+  res.render('info.ejs');
+});
+
 
 app.get('/logIn', async (req, res) => {
   res.render('logIn.ejs');
