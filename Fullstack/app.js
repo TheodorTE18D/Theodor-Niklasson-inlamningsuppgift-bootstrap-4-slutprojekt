@@ -4,6 +4,7 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const userModel = require('./UserModule');
+const msgModel = require('./msgModule');
 const dbModule = require('./mongoDb');
 const bcrypt = require('bcryptjs');
 const clientDir = __dirname + "\\client\\";
@@ -53,7 +54,7 @@ app.post('/logIn', async (req, res) => {
         console.log(err);
         res.send("Login failed");
       }
-    })
+    });
   }
   else{
     res.send("User not found");
@@ -71,8 +72,16 @@ app.post('/signUp',  async (req, res)  =>  {
 
     res.redirect('/');
     
-})
+});
 
+app.post('/message', async (req, res) => {
+  
+  const msg = msgModel.createMsg(req.body.message);
+
+  await dbModule.storeElement(msg);
+
+  res.redirect('/message')
+});
 
 
 
