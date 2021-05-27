@@ -74,14 +74,6 @@ app.post('/signUp',  async (req, res)  =>  {
     
 });
 
-app.post('/message', async (req, res) => {
-  
-  const msg = msgModel.createMsg(req.body.message);
-
-  await dbModule.storeElement(msg);
-
-  res.redirect('/message')
-});
 
 
 
